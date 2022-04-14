@@ -1,6 +1,6 @@
 pipeline{
 
-    agent lamp
+    agent lamp;
 
     stages{
         stage ("Code Quality"){
