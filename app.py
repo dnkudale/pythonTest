@@ -25,7 +25,7 @@ def check_card(func):
             response = {"approved": False, "newLimit": data.get(
                 "limit"), "reason": "Transaction above the limit"}
             return jsonify(response)
-        return f(*args, **kwargs)
+        return func(*args, **kwargs)
     return validation
 
 
