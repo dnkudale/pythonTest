@@ -11,9 +11,9 @@ pipeline{
                 sh 'python3 -m pip list'
             }      
         }
-        stage ("Unit Tests"){
+        stage ("Code Quality"){
             steps{
-                sh 'echo Testing the applications'
+                sh 'python -m pylint app.py'
             }      
         }
         stage ("Build"){
