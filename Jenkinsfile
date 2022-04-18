@@ -16,19 +16,19 @@ pipeline{
                 sh 'python3 -m pylint app.py'
             }      
         }
-        stage ("Build"){
+        stage ("Tests"){
             steps{
-                sh 'echo Creating Application Package'
+                sh 'python -m pytest'
             }      
         }
-        stage ("Delivery"){
+        stage ("build"){
             steps{
-                sh 'echo Uploading Artifacts to repository'
+                sh 'docker build https://github.com/dnkudale/pythonTest.git -t pythonTestApp:latest'
             }      
         }
-        stage ("Code Deploy"){
+        stage ("Deploy"){
             steps{
-                sh 'echo Deploying the applications'
+                sh 'docker run -itd -p 5000:5000 pythonTestApp:latest'
             }      
         }
     }
