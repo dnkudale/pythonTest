@@ -8,19 +8,19 @@ pipeline{
         stage ("Preparing the environment"){
             steps{
                 sh 'python3 -m pip install -r requirements.txt'
-                sh 'python3 -m pip list'
+                // sh 'python3 -m pip list'
             }      
         }
-        stage ("Code Quality"){
-            steps{
-                sh 'python3 -m pylint app.py'
-            }      
-        }
-        stage ("Tests"){
-            steps{
-                sh 'python3 -m pytest'
-            }      
-        }
+        // stage ("Code Quality"){
+        //     steps{
+        //         sh 'python3 -m pylint app.py'
+        //     }      
+        // }
+        // stage ("Tests"){
+        //     steps{
+        //         sh 'python3 -m pytest'
+        //     }      
+        // }
         stage ("build"){
             agent {
                 label 'docker'
