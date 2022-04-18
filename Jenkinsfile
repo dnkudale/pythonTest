@@ -13,7 +13,7 @@ pipeline{
         }
         stage ("Code Quality"){
             steps{
-                sh 'python -m pylint app.py'
+                sh 'python3 -m pylint app.py'
             }      
         }
         stage ("Build"){
