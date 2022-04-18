@@ -3,18 +3,17 @@
 this code is just to get proper linting
 """
 
-
-from flask import Flask, request, jsonify
 from functools import wraps
+from flask import Flask, request, jsonify
 
 app = Flask(__name__)
 
 
-def check_card(f):
+def check_card(func):
     """
     this code validates the credit card transactions
     """
-    wraps(f)
+    wraps(func)
 
     def validation(*args, **kwargs):
         data = request.get_json()
@@ -27,7 +26,7 @@ def check_card(f):
                 "limit"), "reason": "Transaction above the limit"}
             return jsonify(response)
         return f(*args, **kwargs)
-    return(validation)
+    return validation
 
 
 @ app.route("/api/transaction", methods=["POST"])
