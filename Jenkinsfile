@@ -7,8 +7,8 @@ pipeline{
     stages{
         stage ("Preparing the environment"){
             steps{
-                sh 'python -m pip install -r requirements.txt'
-                sh 'python -m pip list'
+                sh 'python3 -m pip install -r requirements.txt'
+                sh 'python3 -m pip list'
             }      
         }
         stage ("Unit Tests"){
