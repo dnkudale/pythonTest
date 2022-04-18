@@ -5,9 +5,10 @@ pipeline{
     }
 
     stages{
-        stage ("Code Quality"){
+        stage ("Preparing the environment"){
             steps{
-                sh 'echo checking code quality'
+                sh 'python -m pip install -r requirements.txt'
+                sh 'python -m pip list'
             }      
         }
         stage ("Unit Tests"){
